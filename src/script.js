@@ -53,5 +53,5 @@ console.log('Current date (day/month):', `${currentDay}/${currentMonth + 1}`);
 // Render only the image
 if (nearestImage) {
     const app = document.getElementById('app');
-    app.innerHTML = `<img src="./img/${nearestImage.name}" alt="Tabla de alimentación" style="max-width: 100%; height: auto;">`;
+    app.innerHTML = `<img src="./${nearestImage.name}" alt="Tabla de alimentación" style="max-width: 100%; height: auto;">`;
 }
