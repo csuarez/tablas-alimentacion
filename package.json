@@ -1,0 +1,16 @@
+{
+  "name": "tablas-alimentacion",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite serve"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "vite": "^4.0.0"
+  },
+  "description": "A tablas-alimentacion project setup",
+  "author": "",
+  "license": "MIT"
+}
