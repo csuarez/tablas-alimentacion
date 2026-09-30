@@ -82,3 +82,43 @@ This is a personal project created for individual meal planning purposes. While 
 ## License
 
 This project is licensed under the MIT License.
+
+## Running with Docker (homelab / Colima)
+
+The image builds the site with Node and serves the static `dist/` with nginx.
+
+### One-time setup on the homelab Mac
+
+```sh
+brew install colima docker docker-compose
+colima start --cpu 1 --memory 1
+# Start Colima automatically on login/boot
+brew services start colima
+```
+
+Homebrew's `docker-compose` is a CLI plugin; make sure `~/.docker/config.json` contains:
+
+```json
+{ "cliPluginsExtraDirs": ["/opt/homebrew/lib/docker/cli-plugins"] }
+```
+
+### Build and run
+
+```sh
+docker compose up -d --build
+```
+
+The site is served on port `8080` (override with `PORT=9000 docker compose up -d`).
+Open `http://<homelab-host>:8080`. If it only answers on `localhost` from the homelab itself,
+check that Colima's port forwarding is exposing the port on the LAN interface (`lsof -iTCP:8080 -sTCP:LISTEN`).
+
+The container uses `restart: unless-stopped`, so it comes back whenever Colima restarts.
+
+### Updating the schedule
+
+After adding a new image to `public/` and `src/image-list.json`:
+
+```sh
+git pull
+docker compose up -d --build
+```
