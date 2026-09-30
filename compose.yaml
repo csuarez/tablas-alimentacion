@@ -1,0 +1,8 @@
+services:
+  tablas-alimentacion:
+    build: .
+    image: tablas-alimentacion:latest
+    container_name: tablas-alimentacion
+    ports:
+      - "${PORT:-8080}:80"
+    restart: unless-stopped
